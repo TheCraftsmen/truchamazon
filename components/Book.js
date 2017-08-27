@@ -4,7 +4,9 @@ import {
   Text,
   View,
   Image,
+  TouchableOpacity,
 } from 'react-native';
+import {Actions} from "react-native-router-flux";
 
 export default class BookView extends Component {
   static propTypes = {
@@ -12,8 +14,12 @@ export default class BookView extends Component {
     title: PropTypes.string,
     desc: PropTypes.string,
   }
+
+  goToBook = () => Actions.book(this.props)
+
   render() {
     return (
+      <TouchableOpacity onPress={this.goToBook}>
       <View style={styles.container}>
         {
           this.props.image &&
@@ -29,6 +35,7 @@ export default class BookView extends Component {
           </Text>
         </View>
       </View>
+      </TouchableOpacity>
     );
   }
 }
